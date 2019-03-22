@@ -5,17 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Atma:400,700&amp;subset=latin-ext" rel="stylesheet">
+  <!-- Styles -->
   <link rel="stylesheet" href="dist/css/style.css">
-  <title>Kamień, papier, nożce</title>
+  <title>Kamień papier nożce</title>
 </head>
 
 <body>
   <div class="container">
-    <div id="buttons"></div>
-    <div id="messages"></div>
+    <div class="game-board">
+      <h1 class="game-title">Kamień papier nożyce</h1>
+      <h2 class="game-subtitle">gramy?!</h2>
+      <div class="choice">
+        <div class="choice-img rock">
+          <img src="src/images/rock.jpg" alt="kamień">
+        </div>
+        <div class="choice-img paper">
+          <img src="src/images/paper.jpg" alt="papier">
+        </div>
+        <div class="choice-img scissors">
+          <img src="src/images/scissors.jpg" alt="nożyce">
+        </div>
+      </div>
+      <button class="play">gram!</button>
+      <div class="message">
+        <h3 class="game-status">Stan gry: <span>czekam na ruch!</span></h3>
+      </div>
+      <div class="result-board">
+        <h3 class="result-title">wynik</h3>
+        <p class="game-result"><span>0</span>:<span>0</span></p>
+        <p class="game-counter">Liczba gier: <span>0</span></p>
+      </div>
+    </div>
   </div>
-  <script src="src/js/functions.js"></script>
-  <script src="src/js/script.js"></script>
+  <!-- <script src="src/js/functions.js"></script> -->
+  <!-- <script src="src/js/script.js"></script> -->
+  <script src="src/js/main.js"></script>
 </body>
 
 </html>
