@@ -5,7 +5,8 @@
   align-items: center;
 }
 
-.game-title {
+.game-title,
+.result-title {
   margin: 20px 0;
 }
 
@@ -34,8 +35,17 @@
   object-fit: cover;
 }
 
+.comp-choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .play,
 .game-status,
+.comp-title,
 .result-title,
 .game-result,
 .game-counter {
@@ -53,6 +63,7 @@
   background-color: #F5D63E;
   border: 6px solid white;
   border-radius: 10px;
+  outline-style: none;
 }
 
 .game-result {
