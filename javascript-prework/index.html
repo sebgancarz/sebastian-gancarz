@@ -25,22 +25,24 @@
       </div>
       <button class="play">gram!</button>
 
-      <div class="panel-left">
-        <h3>Wyniki gry</h3>
-        <p>Twój wybór: <span data-summary="player-choice"></span></p>
-        <img class="player-image" data-option="player-choice" src="src/images/hands.jpg" alt="">
-        <p>Wybór komputera: <span data-summary="comp-choice"></span></p>
-        <img class="comp-image" data-option="comp-choice" src="src/images/hands.jpg" alt="">
-        <h2>Zwycięzca gry: <span data-summary="who-win"></span></h2>
-      </div>
+      <h3 class="result-title">Wyniki gry:</h3>
+      <div class="game-results">
+        <div class="panel-left">
+          <p class="description">Twój wybór: <span data-summary="player-choice"></span></p>
+          <img class="player-image" data-option="player-choice" src="src/images/hands.jpg" alt="">
+          <p class="description">Wybór komputera: <span data-summary="computer-choice"></span></p>
+          <img class="computer-image" data-option="computer-choice" src="src/images/hands.jpg" alt="">
+        </div>
 
-      <div class="panel-right">
-        <h3>Aktualne wyniki</h3>
-        <p class="numbers">liczba gier: <span>0</span></p>
-        <p class="wins">wygranych: <span>0</span></p>
-        <p class="losses">przegranych: <span>0</span></p>
-        <p class="draws">remisów: <span>0</span></p>
+        <div class="panel-right">
+          <h3 class="scores">Aktualne wyniki:</h3>
+          <p class="numbers description">liczba gier: <span>0</span></p>
+          <p class="wins description">wygranych: <span>0</span></p>
+          <p class="losses description">przegranych: <span>0</span></p>
+          <p class="draws description">remisów: <span>0</span></p>
+        </div>
       </div>
+      <h2 class="winner-title">Zwycięzca gry: <span data-summary="who-win"></span></h2>
 
     </div>
   </div>
