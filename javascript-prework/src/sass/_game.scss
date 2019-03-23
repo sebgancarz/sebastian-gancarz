@@ -1,72 +1,15 @@
-.game-board {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.game-title,
-.result-title {
-  margin: 20px 0;
-}
-
-.game-subtitle {
-  font-size: 42px;
-  margin-bottom: 20px;
-}
-
-.choice {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.choice-img {
-  width: 140px;
-  height: 140px;
-  margin: 10px;
+.choice img,
+.panel-left img {
   border: 6px solid white;
   border-radius: 10px;
 }
 
-.choice-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.choice img {
+  width: 120px;
+  height: 120px;
 }
 
-.comp-choice {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.play,
-.game-status,
-.comp-title,
-.result-title,
-.game-result,
-.game-counter {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.play {
-  margin-top: 20px;
-  font-family: 'Atma', cursive;
-  font-weight: bold;
-  text-transform: uppercase;
-  width: 140px;
+.panel-left img {
+  width: 80px;
   height: 80px;
-  background-color: #F5D63E;
-  border: 6px solid white;
-  border-radius: 10px;
-  outline-style: none;
-}
-
-.game-result {
-  font-size: 42px;
-  font-weight: bold;
 }
