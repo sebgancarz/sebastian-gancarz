@@ -17,37 +17,36 @@
     <div class="game-board">
       <h1 class="game-title">Kamień papier nożyce</h1>
       <h2 class="game-subtitle">gramy?!</h2>
+      <p class="description">wybierz dłoń:</p>
       <div class="choice">
-        <div class="choice-img rock">
-          <img src="src/images/rock.jpg" alt="kamień">
-        </div>
-        <div class="choice-img paper">
-          <img src="src/images/paper.jpg" alt="papier">
-        </div>
-        <div class="choice-img scissors">
-          <img src="src/images/scissors.jpg" alt="nożyce">
-        </div>
+        <img data-option="rock" src="src/images/rock.jpg" alt="" title="Kamień">
+        <img data-option="paper" src="src/images/paper.jpg" alt="" title="Papier">
+        <img data-option="scissors" src="src/images/scissors.jpg" alt="" title="Nożyce">
       </div>
       <button class="play">gram!</button>
-      <div class="comp-choice">
-        <h3 class="comp-title">Wybór komputera:</h3>
-        <div class="choice-img">
-          <img src="src/images/hands.jpg" alt="nożyce">
-        </div>
+
+      <div class="panel-left">
+        <h3>Wyniki gry</h3>
+        <p>Twój wybór: <span data-summary="player-choice"></span></p>
+        <img class="player-image" data-option="player-choice" src="src/images/hands.jpg" alt="">
+        <p>Wybór komputera: <span data-summary="comp-choice"></span></p>
+        <img class="comp-image" data-option="comp-choice" src="src/images/hands.jpg" alt="">
+        <h2>Zwycięzca gry: <span data-summary="who-win"></span></h2>
       </div>
-      <div class="message">
-        <h3 class="game-status">Stan gry: <span>czekam na ruch!</span></h3>
+
+      <div class="panel-right">
+        <h3>Aktualne wyniki</h3>
+        <p class="numbers">liczba gier: <span>0</span></p>
+        <p class="wins">wygranych: <span>0</span></p>
+        <p class="losses">przegranych: <span>0</span></p>
+        <p class="draws">remisów: <span>0</span></p>
       </div>
-      <div class="result-board">
-        <h3 class="result-title">wynik</h3>
-        <p class="game-result">Gracz - <span>0</span> : <span>0</span> - Komputer</p>
-        <p class="game-counter">Liczba gier: <span>0</span></p>
-      </div>
+
     </div>
   </div>
-  <!-- <script src="src/js/functions.js"></script> -->
-  <!-- <script src="src/js/script.js"></script> -->
+
   <script src="src/js/main.js"></script>
+  <script src="src/js/functions.js"></script>
 </body>
 
 </html>
