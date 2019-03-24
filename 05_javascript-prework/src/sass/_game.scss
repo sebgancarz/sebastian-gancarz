@@ -1,0 +1,97 @@
+.game-board {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.game-title {
+  font-size: 24px;
+}
+
+.game-subtitle {
+  font-size: 36px;
+}
+
+.description {
+  font-size: 14px;
+}
+
+.choice {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.choice img,
+.panel-left img,
+.play {
+  border: 6px solid white;
+  border-radius: 10px;
+  margin: 4px;
+}
+
+.choice img {
+  width: 80px;
+  height: 80px;
+}
+
+.panel-left img {
+  width: 60px;
+  height: 60px;
+}
+
+.play {
+  width: 80px;
+  height: 40px;
+  margin-top: 12px;
+  background-color: #F5D63D;
+  font-family: 'Atma', cursive;
+  font-size: 20px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.result-title,
+.round-winner-title {
+  margin-top: 14px;
+  font-size: 24px;
+}
+
+.game-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+}
+
+.panel-left,
+.panel-right {
+  margin-top: 12px;
+  flex-basis: 48%;
+}
+
+.panel-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.player,
+.computer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 5px;
+}
+
+.scores {
+  font-size: 18px;
+}
+
+.panel-right p span {
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.game-winner-title {
+  font-size: 36px;
+}
