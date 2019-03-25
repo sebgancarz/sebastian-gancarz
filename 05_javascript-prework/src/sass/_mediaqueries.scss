@@ -1,0 +1,89 @@
+@media (min-width: 360px) {
+  .game-board {
+    margin-top: 50px;
+  }
+
+  .choice img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .panel-left img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .play {
+    width: 90px;
+    height: 45px;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 410px) {
+  .game-board {
+    margin-top: 60px;
+  }
+
+  .choice img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .panel-left img {
+    width: 66px;
+    height: 66px;
+  }
+
+  .play {
+    width: 100px;
+    height: 50px;
+    margin-top: 10px;
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 680px) {
+  .game-board {
+    margin-top: 60px;
+  }
+
+  .choice img,
+  .panel-left img,
+  .play {
+    margin: 8px;
+  }
+
+  .choice img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .panel-left img {
+    width: 76px;
+    height: 76px;
+  }
+
+  .play {
+    width: 120px;
+    height: 60px;
+    margin-top: 10px;
+  }
+
+  h3 {
+    margin-top: 10px;
+    font-size: 30px;
+  }
+
+  .description {
+    font-size: 24px;
+  }
+}

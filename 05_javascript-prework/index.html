@@ -13,44 +13,54 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="game-board">
-      <h1 class="game-title">Kamień papier nożyce</h1>
-      <h2 class="game-subtitle">gramy?!</h2>
-      <p class="description">wybierz dłoń:</p>
-      <div class="choice">
-        <img data-option="rock" src="src/images/rock.jpg" alt="" title="Kamień">
-        <img data-option="paper" src="src/images/paper.jpg" alt="" title="Papier">
-        <img data-option="scissors" src="src/images/scissors.jpg" alt="" title="Nożyce">
-      </div>
-      <button class="play">gram!</button>
+  <section class="game">
+    <div class="container">
+      <div class="game-board">
+        <h1 class="game-title">Kamień papier nożyce</h1>
+        <h2 class="game-subtitle">gramy do 5?!</h2>
+        <p class="description">wybierz dłoń:</p>
+        <div class="choice">
+          <img data-option="rock" src="src/images/rock.jpg" alt="" title="Kamień">
+          <img data-option="paper" src="src/images/paper.jpg" alt="" title="Papier">
+          <img data-option="scissors" src="src/images/scissors.jpg" alt="" title="Nożyce">
+        </div>
+        <button class="play">gram!</button>
 
-      <h3 class="result-title">Wyniki gry:</h3>
-      <div class="game-results">
-        <div class="panel-left">
-          <div class="player">
-            <p class="description">Twój wybór: <span data-summary="player-choice"></span></p>
-            <img class="player-image" data-option="player-choice" src="src/images/hands.jpg" alt="">
+        <h3 class="result-title">Wyniki gry:</h3>
+        <div class="game-results">
+          <div class="panel-left">
+            <div class="player">
+              <p class="description">Twój wybór: <span data-summary="player-choice"></span></p>
+              <img class="player-image" data-option="player-choice" src="src/images/hands.jpg" alt="">
+            </div>
+            <div class="computer">
+              <p class="description">Wybór komputera: <span data-summary="computer-choice"></span></p>
+              <img class="computer-image" data-option="computer-choice" src="src/images/hands.jpg" alt="">
+            </div>
           </div>
-          <div class="computer">
-            <p class="description">Wybór komputera: <span data-summary="computer-choice"></span></p>
-            <img class="computer-image" data-option="computer-choice" src="src/images/hands.jpg" alt="">
+
+          <div class="panel-right">
+            <h4 class="scores">Aktualne wyniki:</h4>
+            <p class="numbers description">liczba gier: <span>0</span></p>
+            <p class="wins description">wygranych: <span data-summary="wons">0</span></p>
+            <p class="losses description">przegranych: <span data-summary="losses">0</span></p>
+            <p class="draws description">remisów: <span>0</span></p>
           </div>
         </div>
-
-        <div class="panel-right">
-          <h3 class="scores">Aktualne wyniki:</h3>
-          <p class="numbers description">liczba gier: <span>0</span></p>
-          <p class="wins description">wygranych: <span data-summary="wons">0</span></p>
-          <p class="losses description">przegranych: <span data-summary="losses">0</span></p>
-          <p class="draws description">remisów: <span>0</span></p>
-        </div>
+        <h2 class="round-winner-title">Wynik rundy: <br><span data-summary="who-win"></span></h2>
       </div>
-      <h2 class="round-winner-title">Zwycięzca rundy: <br><span data-summary="who-win"></span></h2>
-
-
     </div>
-  </div>
+  </section>
+  <section class="end">
+    <div class="container">
+      <div class="pop">
+        <h3>Wynik rozgrywki:</h3>
+        <p class="final-score"><span data-summary="final-wons">0</span> : <span data-summary="final-losses">0</span></p>
+        <p class="winner-is"><span data-summary="final-result"></span></p>
+        <button class="again">gram dalej!</button>
+      </div>
+    </div>
+  </section>
 
   <script src="src/js/main.js"></script>
   <script src="src/js/functions.js"></script>

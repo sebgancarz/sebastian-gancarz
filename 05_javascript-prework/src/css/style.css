@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: 'Atma', cursive;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+body {
+  background-color: #222;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 80vw;
+  margin: 0 auto;
+}
+
+.game-board {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.game-title {
+  font-size: 24px;
+}
+
+.game-subtitle {
+  font-size: 36px;
+}
+
+.description {
+  font-size: 14px;
+}
+
+.choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.choice img,
+.panel-left img,
+.play {
+  border: 6px solid white;
+  border-radius: 10px;
+  margin: 4px;
+}
+
+.choice img {
+  width: 80px;
+  height: 80px;
+}
+
+.panel-left img {
+  width: 60px;
+  height: 60px;
+}
+
+.play {
+  width: 80px;
+  height: 40px;
+  margin-top: 12px;
+  background-color: #F5D63D;
+  font-family: 'Atma', cursive;
+  font-size: 20px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.result-title,
+.round-winner-title {
+  margin-top: 14px;
+  font-size: 24px;
+}
+
+.game-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: right;
+}
+
+.panel-left,
+.panel-right {
+  margin-top: 12px;
+  -ms-flex-preferred-size: 48%;
+      flex-basis: 48%;
+}
+
+.panel-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.player,
+.computer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px;
+}
+
+.scores {
+  font-size: 18px;
+}
+
+.panel-right p span {
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.game-winner-title {
+  font-size: 36px;
+}
+/*# sourceMappingURL=style.css.map */

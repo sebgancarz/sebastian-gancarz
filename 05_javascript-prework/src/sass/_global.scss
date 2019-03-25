@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Atma', cursive;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+body {
+  position: relative;
+  background-color: #222;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 90vw;
+  margin: 0 auto;
+}
+
+h3 {
+  margin-top: 10px;
+  font-size: 22px;
+}
+
+button {
+  background-color: #F5D63D;
+  font-family: 'Atma', cursive;
+  font-size: 20px;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.description {
+  font-size: 14px;
+}
+
+.choice img,
+.panel-left img,
+.play,
+.pop,
+.again {
+  border: 6px solid white;
+  border-radius: 10px;
+}

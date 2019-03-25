@@ -45,22 +45,44 @@ function drawResult(player, computer, result) {
   }
 }
 
-// Round clear function
+// Clear functions
 function roundEnd() {
   document.querySelector(`[data-option='${game.playerHand}']`).style.borderColor = '';
   game.playerHand = '';
   game.computerHand = '';
 }
 
-// Game end function
+function startAgain() {
+  document.querySelector('.game').classList.remove('blur');
+  document.querySelector('.end').classList.remove('active');
+  document.querySelector('.player-image').src = 'src/images/hands.jpg';
+  document.querySelector('.computer-image').src = 'src/images/hands.jpg';
+  document.querySelector('p.numbers span').textContent = '0';
+  document.querySelector('p.wins span').textContent = '0';
+  document.querySelector('p.losses span').textContent = '0';
+  document.querySelector('p.draws span').textContent = '0';
+  document.querySelector('[data-summary="who-win"]').textContent = ""
+  gameSummary.numbers = 0;
+  gameSummary.wins = 0;
+  gameSummary.losses = 0;
+  gameSummary.draws = 0;
+}
+
 function gameEnd(wons, losses) {
-  if (wons === 5 || losses === 5) {
-    // const gameTitle = document.createElement('h2');
-    // gameTitle.classList.toggle('game-winner-title');
-    // gameTitle.textContent = "Koniec Gry!"
-    // document.appendChild(gameTitle);
+  if (wons === wonNumber || losses === wonNumber) {
+    document.querySelector('[data-summary="final-wons"]').textContent = `${wons}`;
+    document.querySelector('[data-summary="final-losses"]').textContent = `${losses}`;
+    if (wons === wonNumber) {
+      document.querySelector('.winner-is').textContent = 'wygrałeś! :-)';
+      document.querySelector('.winner-is').style.color = 'green';
+    } else if (losses === wonNumber) {
+      document.querySelector('.winner-is').textContent = 'przegrałeś! :-(';
+      document.querySelector('.winner-is').style.color = 'red';
+    }
+    document.querySelector('.game').classList.add('blur');
+    document.querySelector('.end').classList.add('active');
+    document.querySelector('.again').addEventListener('click', startAgain);
   }
-  console.log(wons, losses);
 }
 
 // Init function
@@ -71,7 +93,6 @@ function startGame() {
   game.computerHand = computerChoice();
   const roundResult = checkResult(game.playerHand, game.computerHand);
   drawResult(game.playerHand, game.computerHand, roundResult);
-
   roundEnd();
   gameEnd(gameSummary.wins, gameSummary.losses);
 }

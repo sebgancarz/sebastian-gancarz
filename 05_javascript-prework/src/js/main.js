@@ -10,4 +10,6 @@ const game = {
   computerHand: "",
 }
 
+const wonNumber = 3;
+
 const hands = [...document.querySelectorAll('.choice img')];
