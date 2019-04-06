@@ -20,8 +20,8 @@ const optTitleSelector = '.post-title';
 const optTitleListSelector = '.titles';
 const optArticleTagSelector = '.post-tags .list';
 const optTagsListSelector = '.tags.list';
-// const optAuthorSelector = '.post-author';
-// const optAuthorsListSelector = '.authors.list';
+const optAuthorSelector = '.post-author';
+const optAuthorsListSelector = '.authors.list';
 
 function generateTitleLinks(customSelector = '') {
   /* Remove contents of titlelist */
@@ -91,20 +91,35 @@ function generateTags() {
 generateTags();
 
 function generateAuthors() {
+  /* create a new variable allAuthors with an empty array */
   const allAuthors = [];
-  const articles = document.querySelectorAll('.post');
+  /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
+  /* START LOOP: for every article: */
   articles.forEach((article) => {
-    const articleAuthor = article.querySelector('.post-author');
-    const authorTag = article.getAttribute('data-author');
-    const linkHTML = `<li><a href="#tag-${authorTag}"><span>${authorTag}</span></a></li>`;
-    articleAuthor.innerHTML = linkHTML;
+    /* find Author wrapper */
+    const articleAuthor = article.querySelector(optAuthorSelector);
+    /* get author name from data-author attribute */
+    const authorName = article.getAttribute('data-author');
+    /* create author tag for a link href attribute */
+    const authorTag = authorName.replace(' ', '-');
+    /* generate HTML of the link */
+    const linkHTML = `<li><a href="#tag-${authorTag}"><span>${authorName}</span></a></li>`;
+    /* check if this link is NOT already in allTags */
     if (allAuthors.indexOf(linkHTML) === -1) {
+      /* add generated code to allTags array */
       allAuthors.push(linkHTML);
     }
-    const authorsList = document.querySelector('.authors.list');
-    authorsList.innerHTML = allAuthors.join(' ');
+    /* insert HTML of all the links into the tags wrapper */
+    articleAuthor.innerHTML = linkHTML;
   });
+  /* END LOOP: for every article: */
+  /* find list of authors in right column */
+  const authorsList = document.querySelector(optAuthorsListSelector);
+  /* add html from allAuthors to authorsList */
+  authorsList.innerHTML = allAuthors.join(' ');
 }
+
 generateAuthors();
 
 function tagClickHandler(e) {
