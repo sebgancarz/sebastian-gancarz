@@ -21,7 +21,7 @@ const optTitleListSelector = '.titles';
 const optArticleTagSelector = '.post-tags .list';
 const optTagsListSelector = '.tags.list';
 // const optAuthorSelector = '.post-author';
-const optAuthorsListSelector = '.authors.list';
+// const optAuthorsListSelector = '.authors.list';
 
 function generateTitleLinks(customSelector = '') {
   /* Remove contents of titlelist */
@@ -94,7 +94,7 @@ function generateAuthors() {
   const allAuthors = [];
   const articles = document.querySelectorAll('.post');
   articles.forEach((article) => {
-    const articleAuthor = document.querySelector('.post-author');
+    const articleAuthor = article.querySelector('.post-author');
     const authorTag = article.getAttribute('data-author');
     const linkHTML = `<li><a href="#tag-${authorTag}"><span>${authorTag}</span></a></li>`;
     articleAuthor.innerHTML = linkHTML;
