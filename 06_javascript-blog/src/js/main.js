@@ -20,7 +20,7 @@ const optTitleSelector = '.post-title';
 const optTitleListSelector = '.titles';
 const optArticleTagSelector = '.post-tags .list';
 const optTagsListSelector = '.tags.list';
-const optAuthorSelector = '.post-author';
+// const optAuthorSelector = '.post-author';
 const optAuthorsListSelector = '.authors.list';
 
 function generateTitleLinks(customSelector = '') {
@@ -68,7 +68,7 @@ function generateTags() {
     /* START LOOP: for each tag */
     articleTagsArray.forEach((tag) => {
       /* generate HTML of the link */
-      const linkHTML = `<li><a href="#tag-${tag}"><span>${tag},</span> </a></li>`;
+      const linkHTML = `<li><a href="#tag-${tag}"><span>${tag}</span></a></li>`;
       /* add generated code to html variable */
       html += linkHTML;
       /* check if this link is NOT already in allTags */
@@ -91,33 +91,20 @@ function generateTags() {
 generateTags();
 
 function generateAuthors() {
-  /* create a new variable allAuthors with an empty array */
   const allAuthors = [];
-  /* find all authors */
-  const authors = document.querySelectorAll(optAuthorSelector);
-  /* make html variable with empty string */
-  let html = '';
-  /* START LOOP: for every author: */
-  authors.forEach((author) => {
-    /* get author name from paragraph */
-    const authorTag = author.textContent;
-    /* generate HTML of the link */
-    const linkHTML = `<li><a href="#"><span class="author-name">${authorTag}</span></a></li>`;
-    /* add generated code to html variable */
-    html += linkHTML;
-    /* check if this link is NOT already in allAuthors */
+  const articles = document.querySelectorAll('.post');
+  articles.forEach((article) => {
+    const articleAuthor = document.querySelector('.post-author');
+    const authorTag = article.getAttribute('data-author');
+    const linkHTML = `<li><a href="#tag-${authorTag}"><span>${authorTag}</span></a></li>`;
+    articleAuthor.innerHTML = linkHTML;
     if (allAuthors.indexOf(linkHTML) === -1) {
-      /* add generated code to allAuthors array */
       allAuthors.push(linkHTML);
     }
-    /* END LOOP: for each tag */
+    const authorsList = document.querySelector('.authors.list');
+    authorsList.innerHTML = allAuthors.join(' ');
   });
-  /* find list of authors in right column */
-  const authorsList = document.querySelector(optAuthorsListSelector);
-  /* add html from allAuthors to authorsList */
-  authorsList.innerHTML = allAuthors.join(' ');
 }
-
 generateAuthors();
 
 function tagClickHandler(e) {
@@ -144,5 +131,3 @@ function addClickListenersToTags() {
   linksToTags.forEach(linkToTags => linkToTags.addEventListener('click', tagClickHandler));
 }
 addClickListenersToTags();
-
-// Zacząć od "Liczba wystąpień tagu"
