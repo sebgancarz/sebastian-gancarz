@@ -86,10 +86,6 @@ function generateTags() {
 
 generateTags();
 
-const links = document.querySelectorAll('.titles a');
-
-links.forEach(link => link.addEventListener('click', titleClickHandler));
-
 function generateAuthors() {
   /* create a new variable allAuthors with an empty array */
   const allAuthors = [];
@@ -168,3 +164,7 @@ function addClickListenersToAuthors() {
   linksToAuthors.forEach(linkToAuthor => linkToAuthor.addEventListener('click', authorClickHandler));
 }
 addClickListenersToAuthors();
+
+const links = document.querySelectorAll('.titles a');
+
+links.forEach(link => link.addEventListener('click', titleClickHandler));
