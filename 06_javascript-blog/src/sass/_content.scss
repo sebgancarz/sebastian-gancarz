@@ -14,10 +14,6 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-
-  .active {
-    font-weight: bold;
-  }
 }
 
 .list-horizontal {
@@ -29,6 +25,37 @@
 .list-horizontal a {
   margin-right: 5px;
 }
+
+.tags {
+  li {
+    display: inline-block;
+
+    a {
+      margin-right: 10px;
+      color: midnightblue;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .tag-size-1 {
+      font-size: $tag-size-1;
+    }
+
+    .tag-size-2,
+    .tag-size-5 {
+      font-weight: bold;
+    }
+
+    .tag-size-2 {
+      font-size: $tag-size-2;
+    }
+
+    .tag-size-5 {
+      font-size: $tag-size-5;
+    }
+  }
+}
+
 
 /* Authors */
 
