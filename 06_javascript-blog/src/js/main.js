@@ -6,7 +6,8 @@ const optTagsListSelector = '.tags.list';
 const optAuthorSelector = '.post-author';
 const optAuthorsListSelector = '.authors.list';
 const optCloudClassCount = 5;
-const optCloudClassPrefix = 'tag-size-';
+const optTagCloudClassPrefix = 'tag-size-';
+const optAuthorCloudClassPrefix = 'author-size-';
 
 function generateTitleLinks(customSelector = '') {
   /* Remove contents of titlelist */
@@ -68,14 +69,14 @@ function calculateTagsParams(tags) {
 
 function calculateTagClass(count, params) {
   const classNumber = Math.floor(((count - params.min) / (params.max - params.min + 1)) * optCloudClassCount + 1);
-  return optCloudClassPrefix + classNumber;
+  return optTagCloudClassPrefix + classNumber;
 }
 
 function generateTags() {
   /* create a new variable allTags with an empty object */
   const allTags = {};
   /* find all articles */
-  const articles = [...document.querySelectorAll(optArticleSelector)];
+  const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
   articles.forEach((article) => {
     /* find tags wrapper */
@@ -103,6 +104,7 @@ function generateTags() {
       tagsWrapper.innerHTML = html;
       /* END LOOP: for every tag */
     });
+
     /* find list of tags in right column */
     const tagsList = document.querySelector(optTagsListSelector);
     const tagsParams = calculateTagsParams(allTags);
@@ -123,32 +125,57 @@ function generateTags() {
 
 generateTags();
 
+function calculateAuthorsParams(names) {
+  const params = {
+    max: 0,
+    min: 999999
+  };
+
+  for (let name in names) {
+    params.max = names[name] > params.max ? names[name] : params.max;
+    params.min = names[name] < params.min ? names[name] : params.min;
+  }
+  return params;
+}
+
+function calculateAuthorClass(count, params) {
+  const classNumber = Math.floor(((count - params.min) / (params.max - params.min + 1)) * optCloudClassCount + 1);
+  return optAuthorCloudClassPrefix + classNumber;
+}
+
 function generateAuthors() {
-  /* create a new variable allAuthors with an empty array */
-  const allAuthors = [];
-  /* find all articles */
+  const allAuthors = {};
   const articles = document.querySelectorAll(optArticleSelector);
-  /* START LOOP: for every article: */
+
   articles.forEach((article) => {
-    /* find Author wrapper */
     const articleAuthor = article.querySelector(optAuthorSelector);
-    /* get author name from data-author attribute */
-    const authorName = article.getAttribute('data-author');
-    /* generate HTML of the link */
-    const linkHTML = `<li><a href="#tag-${authorName}"><span>${authorName}</span></a></li>`;
-    /* check if this link is NOT already in allTags */
-    if (allAuthors.indexOf(linkHTML) === -1) {
-      /* add generated code to allTags array */
-      allAuthors.push(linkHTML);
+    let html = '';
+    const authorsName = article.getAttribute('data-author').replace(' ', '-');
+    const authorsNameArray = authorsName.split(' ');
+
+    authorsNameArray.forEach(name => {
+      const linkHTML = `<li><a href="#tag-${name}"><span>${name}</span></a></li>`;
+      html += linkHTML;
+      if (!allAuthors.hasOwnProperty(name)) {
+        allAuthors[name] = 1;
+      } else {
+        allAuthors[name] += 1;
+      }
+      articleAuthor.innerHTML = html;
+    });
+
+    const authorsList = document.querySelector(optAuthorsListSelector);
+    const authorsParams = calculateAuthorsParams(allAuthors);
+
+    let allAuthorsHTML = '';
+    for (const name in allAuthors) {
+      if (allAuthors.hasOwnProperty(name)) {
+        const authorLinkHTML = `<li><a class="${calculateAuthorClass(allAuthors[name], authorsParams)}" href="#tag-${name}"><span>${name.replace('-', ' ')}</span></a></li>`;
+        allAuthorsHTML += authorLinkHTML;
+      }
     }
-    /* insert HTML of all the links into the tags wrapper */
-    articleAuthor.innerHTML = linkHTML;
+    authorsList.innerHTML = allAuthorsHTML;
   });
-  /* END LOOP: for every article: */
-  /* find list of authors in right column */
-  const authorsList = document.querySelector(optAuthorsListSelector);
-  /* add html from allAuthors to authorsList */
-  authorsList.innerHTML = allAuthors.join(' ');
 }
 
 generateAuthors();

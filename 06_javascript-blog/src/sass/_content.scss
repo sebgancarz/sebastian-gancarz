@@ -62,6 +62,30 @@
 .authors {
   li {
     margin-bottom: 4px;
+
+    a {
+      margin-right: 10px;
+      color: maroon;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .author-size-1 {
+      font-size: $author-size-1;
+    }
+
+    .author-size-2,
+    .author-size-4 {
+      font-weight: bold;
+    }
+
+    .author-size-2 {
+      font-size: $author-size-2;
+    }
+
+    .author-size-4 {
+      font-size: $author-size-4;
+    }
   }
 }
 
