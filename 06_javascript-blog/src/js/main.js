@@ -1,3 +1,7 @@
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+};
+
 const opts = {
   tagSizes: {
     count: 5,
@@ -30,7 +34,12 @@ function generateTitleLinks(customSelector = '') {
   articles.forEach((article) => {
     const articleId = article.getAttribute('id'); // Get the article id
     const articleTitle = article.querySelector(select.article.title).innerHTML; // Find the title element and get the title from it
-    const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`; // Create HTML of the link
+    // const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`; // Create HTML of the link
+    const linkHTMLData = {
+      id: articleId,
+      title: articleTitle
+    };
+    const linkHTML = templates.articleLink(linkHTMLData);
     html += linkHTML; // Insert link into titleList
   });
   titleList.innerHTML = html;

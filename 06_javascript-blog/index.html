@@ -12,7 +12,7 @@
 <body>
 
   <div class="container">
-    <h1 class="logo">my blog</h1>
+    <h1 class="logo">Fuck That Blog!!!</h1>
     <main class="wrapper">
       <aside class="sidebar">
         <h2 class="section-title">All posts</h2>
@@ -224,6 +224,7 @@
               iaculis scelerisque erat, at ullamcorper arcu consectetur eu. Fusce aliquam diam at arcu pharetra, vel
               fermentum nunc lobortis.</p>
           </div>
+
           <div class="post-tags">
             <p><strong>Tags:</strong></p>
             <ul class="list list-horizontal">
@@ -242,6 +243,13 @@
     </main>
   </div>
 
+  <!-- Handlebars.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <!-- Template -->
+  <script id="template-article-link" type="text/x-handlebars-template">
+    <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+  </script>
+  <!-- Main script -->
   <script src="src/js/main.js"></script>
 </body>
 

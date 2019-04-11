@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Handlebars</title>
+</head>
+
+<body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+
+  <!-- Say hello template -->
+  <script id="template-hello" type="text/x-handlebars-template">
+    <p>Hello {{ firstName }} {{ lastName }}!</p>
+  </script>
+
+  <!-- Product list template -->
+  <script id="template-product-list" type="text/x-handlebars-template">
+    <h3>{{ title }}</h3>
+    <ul>
+      {{#each products}}
+      <li id="{{ @key }}">Buy {{ name }} for {{ price }}!</li>
+      {{/each}}
+    </ul>
+  </script>
+
+  <script>
+    const tplHelloSource = document.querySelector('#template-hello').innerHTML;
+    const tplHello = Handlebars.compile(tplHelloSource)
+    const dataHello = {
+      firstName: 'John',
+      lastName: 'Smith'
+    };
+
+    const dataHello2 = {
+      firstName: 'Maria',
+      lastName: 'Jones'
+    };
+
+    let generatedHTML = tplHello(dataHello);
+    let generatedHTML2 = tplHello(dataHello2);
+    const targetElement = document.body;
+    targetElement.insertAdjacentHTML('beforeend', generatedHTML);
+    targetElement.insertAdjacentHTML('afterbegin', generatedHTML2);
+
+    const tplProductListSource = document.querySelector('#template-product-list').innerHTML;
+    const tplProductList = Handlebars.compile(tplProductListSource);
+
+    const productListData = {
+      title: 'Great offers!',
+      products: {
+        'product-football': {
+          name: 'Football',
+          price: '$10'
+        },
+        'product-volleyball': {
+          name: 'Volleyball',
+          price: '$8'
+        },
+        'product-basketball': {
+          name: 'Basketball',
+          price: '$12'
+        }
+      }
+    };
+
+    generatedHTML3 = tplProductList(productListData);
+    targetElement.insertAdjacentHTML('beforeend', generatedHTML3);
+
+    console.log('tplHello:');
+    console.log(tplHelloSource);
+    console.log('tplProductList:');
+    console.log(tplProductListSource);
+    console.log('==============');
+
+    console.log('dataHello:');
+    console.log(dataHello);
+    console.log(dataHello2);
+    console.log('==============');
+
+    console.log('generatedHTML:');
+    console.log(generatedHTML);
+    console.log(generatedHTML2);
+    console.log(generatedHTML3);
+    console.log('==============');
+  </script>
+</body>
+
+</html>
