@@ -12,7 +12,7 @@
 <body>
 
   <div class="container">
-    <h1 class="logo">Fuck That Blog!!!</h1>
+    <h1 class="logo">Finished Blog!!!</h1>
     <main class="wrapper">
       <aside class="sidebar">
         <h2 class="section-title">All posts</h2>
@@ -245,10 +245,30 @@
 
   <!-- Handlebars.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-  <!-- Template -->
+
+  <!-- Templates -->
   <script id="template-article-link" type="text/x-handlebars-template">
     <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
   </script>
+  <script id="template-tag-link" type="text/x-handlebars-template">
+    <li><a href="#tag-{{ id }}"><span>{{ id }}</span></a></li>
+  </script>
+  <script id="template-author-link" type="text/x-handlebars-template">
+    <li><a href="{{ id }}"><span>{{ name }}</span></a></li>
+  </script>
+
+  <script id="template-cloud-link" type="text/x-handlebars-template">
+    {{#each tags}}
+  <li><a class="{{ className }}" href="#tag-{{ tag }}"><span>{{ tag }}</span></a></li>
+  {{/each}}
+  </script>
+
+  <script id="template-cloud-author" type="text/x-handlebars-template">
+    {{#each names}}
+  <li><a class="{{ className }}" href="#tag-{{ id }}"><span>{{ name }}</span></a></li>
+  {{/each}}
+  </script>
+
   <!-- Main script -->
   <script src="src/js/main.js"></script>
 </body>
