@@ -58,6 +58,7 @@
       thisProduct.id = id;
       thisProduct.data = data;
       thisProduct.renderInMenu();
+      thisProduct.initAccordion();
       console.log('new Product:', thisProduct);
     }
     renderInMenu() {
@@ -67,8 +68,21 @@
       const menuContainer = document.querySelector(select.containerOf.menu); // find menu container
       menuContainer.appendChild(thisProduct.element); // add element to menu
     }
+    initAccordion() {
+      const thisProduct = this;
+      const productToggler = thisProduct.element.querySelector(select.menuProduct.clickable);
+      productToggler.addEventListener('click', function (e) {
+        e.preventDefault; // prevent default action for event
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive); // toggle active class on element of thisProduct
+        const activeProducts = document.querySelectorAll(select.all.menuProductsActive); // find all active products
+        activeProducts.forEach(activeProduct => { // START LOOP: for each active product
+          if (activeProduct !== thisProduct.element) { // START: if the active product isn't the element of thisProduct
+            activeProduct.classList.remove(classNames.menuProduct.wrapperActive); // remove class active for the active product
+          } // END: if
+        }); // END LOOP
+      }); // END: click event
+    }
   }
-
 
   const app = {
     initData: function () {
