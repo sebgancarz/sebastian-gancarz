@@ -58,8 +58,10 @@
       thisProduct.id = id;
       thisProduct.data = data;
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       thisProduct.initAccordion();
-      console.log('new Product:', thisProduct);
+      thisProduct.initOrderForm();
+      thisProduct.processOrder();
     }
     renderInMenu() {
       const thisProduct = this;
@@ -68,10 +70,17 @@
       const menuContainer = document.querySelector(select.containerOf.menu); // find menu container
       menuContainer.appendChild(thisProduct.element); // add element to menu
     }
+    getElements() {
+      const thisProduct = this;
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+    }
     initAccordion() {
       const thisProduct = this;
-      const productToggler = thisProduct.element.querySelector(select.menuProduct.clickable);
-      productToggler.addEventListener('click', function (e) {
+      thisProduct.accordionTrigger.addEventListener('click', function (e) {
         e.preventDefault; // prevent default action for event
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive); // toggle active class on element of thisProduct
         const activeProducts = document.querySelectorAll(select.all.menuProductsActive); // find all active products
@@ -81,6 +90,40 @@
           } // END: if
         }); // END LOOP
       }); // END: click event
+    }
+    initOrderForm() {
+      const thisProduct = this;
+      thisProduct.form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        thisProduct.processOrder();
+      });
+
+      thisProduct.formInputs.forEach(input => input.addEventListener('change', function () {
+        thisProduct.processOrder();
+      }));
+
+      thisProduct.cartButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        thisProduct.processOrder();
+      });
+    }
+    processOrder() {
+      const thisProduct = this;
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      let price = thisProduct.data.price;
+      for (const paramId in thisProduct.data.params) { // START LOOP: for each paramId in thisProduct.data.params
+        const param = thisProduct.data.params[paramId]; // save the element in thisProduct.data.params with key paramId as const param
+        for (const optionId in param.options) { // START LOOP: for each optionId in param.options
+          const option = param.options[optionId]; // save the element in param.options with key optionId as const option
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          if (optionSelected && !option.default) { // IF: if option is selected and option is not default
+            price += option.price; // add price of option to variable price
+          } else if (!optionSelected && option.default) { // ELSE IF: if option is not selected and option is default
+            price -= option.price; // deduct price of option from price
+          } // END IFs
+        } // END LOOP: for each optionId in param.options
+      } // END LOOP: for each paramId in thisProduct.data.params
+      thisProduct.priceElem.textContent = price; // set the contents of thisProduct.priceElem to be the value of variable price
     }
   }
 
