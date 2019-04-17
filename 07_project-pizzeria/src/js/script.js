@@ -110,6 +110,7 @@
     processOrder() {
       const thisProduct = this;
       const formData = utils.serializeFormToObject(thisProduct.form);
+      const reg = /^\d+$/;
       let price = thisProduct.data.price;
       for (const paramId in thisProduct.data.params) { // START LOOP: for each paramId in thisProduct.data.params
         const param = thisProduct.data.params[paramId]; // save the element in thisProduct.data.params with key paramId as const param
@@ -123,7 +124,11 @@
           } // END IFs
         } // END LOOP: for each optionId in param.options
       } // END LOOP: for each paramId in thisProduct.data.params
-      thisProduct.priceElem.textContent = price; // set the contents of thisProduct.priceElem to be the value of variable price
+      if (price > 0 && reg.test(price)) {
+        thisProduct.priceElem.textContent = price; // set the contents of thisProduct.priceElem to be the value of variable price
+      } else {
+        alert('Please, order again.');
+      }
     }
   }
 
