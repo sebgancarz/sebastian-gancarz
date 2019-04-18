@@ -65,10 +65,10 @@
     }
     renderInMenu() {
       const thisProduct = this;
-      const generatedHTML = templates.menuProduct(thisProduct.data); // generate HTML based on template
-      thisProduct.element = utils.createDOMFromHTML(generatedHTML); // create element using utils.createElementFromHTML
-      const menuContainer = document.querySelector(select.containerOf.menu); // find menu container
-      menuContainer.appendChild(thisProduct.element); // add element to menu
+      const generatedHTML = templates.menuProduct(thisProduct.data);
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+      const menuContainer = document.querySelector(select.containerOf.menu);
+      menuContainer.appendChild(thisProduct.element);
     }
     getElements() {
       const thisProduct = this;
@@ -77,19 +77,23 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      console.log('imagesWrapper:', thisProduct.imageWrapper);
     }
     initAccordion() {
       const thisProduct = this;
+
       thisProduct.accordionTrigger.addEventListener('click', function (e) {
-        e.preventDefault; // prevent default action for event
-        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive); // toggle active class on element of thisProduct
-        const activeProducts = document.querySelectorAll(select.all.menuProductsActive); // find all active products
-        activeProducts.forEach(activeProduct => { // START LOOP: for each active product
-          if (activeProduct !== thisProduct.element) { // START: if the active product isn't the element of thisProduct
-            activeProduct.classList.remove(classNames.menuProduct.wrapperActive); // remove class active for the active product
-          } // END: if
-        }); // END LOOP
-      }); // END: click event
+        e.preventDefault;
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
+        const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
+
+        activeProducts.forEach(activeProduct => {
+          if (activeProduct !== thisProduct.element) {
+            activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
+          }
+        });
+      });
     }
     initOrderForm() {
       const thisProduct = this;
@@ -107,25 +111,36 @@
         thisProduct.processOrder();
       });
     }
+
     processOrder() {
       const thisProduct = this;
       const formData = utils.serializeFormToObject(thisProduct.form);
       const reg = /^\d+$/;
       let price = thisProduct.data.price;
-      for (const paramId in thisProduct.data.params) { // START LOOP: for each paramId in thisProduct.data.params
-        const param = thisProduct.data.params[paramId]; // save the element in thisProduct.data.params with key paramId as const param
-        for (const optionId in param.options) { // START LOOP: for each optionId in param.options
-          const option = param.options[optionId]; // save the element in param.options with key optionId as const option
+
+      for (const paramId in thisProduct.data.params) {
+        const param = thisProduct.data.params[paramId];
+
+        for (const optionId in param.options) {
+          const option = param.options[optionId];
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
-          if (optionSelected && !option.default) { // IF: if option is selected and option is not default
-            price += option.price; // add price of option to variable price
-          } else if (!optionSelected && option.default) { // ELSE IF: if option is not selected and option is default
-            price -= option.price; // deduct price of option from price
-          } // END IFs
-        } // END LOOP: for each optionId in param.options
-      } // END LOOP: for each paramId in thisProduct.data.params
+
+          if (optionSelected && !option.default) {
+            price += option.price;
+          } else if (!optionSelected && option.default) {
+            price -= option.price;
+          }
+
+          if (optionSelected) {
+            console.log(`'selected:', ${paramId}-${optionId}`);
+
+          } else {
+            console.log('not selected', option.label);
+          }
+        }
+      }
       if (price > 0 && reg.test(price)) {
-        thisProduct.priceElem.textContent = price; // set the contents of thisProduct.priceElem to be the value of variable price
+        thisProduct.priceElem.textContent = price;
       } else {
         alert('Please, order again.');
       }
