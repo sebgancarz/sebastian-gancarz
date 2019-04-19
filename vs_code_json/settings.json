@@ -1,0 +1,37 @@
+{
+  "window.zoomLevel": 0,
+  "editor.fontSize": 16,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "editor.tabSize": 2,
+  "editor.wordWrapColumn": 70,
+  "autoprefixer.browsers": [
+    "last 2 versions",
+    "> 1%"
+  ],
+  "explorer.confirmDragAndDrop": false,
+  "trailing-spaces.trimOnSave": true,
+  "advancedNewFile.exclude": null,
+  "advancedNewFile.convenienceOptions": [
+    "last",
+    "current",
+    "root"
+  ],
+  "workbench.colorTheme": "Material Theme Ocean High Contrast",
+  "terminal.explorerKind": "external",
+  "terminal.integrated.fontSize": 14,
+  "material-icon-theme.activeIconPack": "react_redux",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "eslint.autoFixOnSave": true,
+  "better-comments.highlightPlainText": true,
+  "togglequotes.chars": [
+    "\"", "'", "`"
+  ],
+  "auto-rename-tag.activationOnLanguage": [
+    "*"
+  ],
+  "materialTheme.accent": "Acid Lime",
+  "material-icon-theme.showUpdateMessage": true
+}
