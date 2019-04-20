@@ -133,19 +133,19 @@
 
           if (optionSelected) {
             images.forEach(image => {
-              const imageClass = image.className.replace(/\-/g, ' ').toLowerCase();
-              const topping = `${option.label}`.toLowerCase();
+              const imageClass = image.className.replace(/-/g, ' ').toLowerCase();
+              const topping = `${param.label} ${option.label}`.toLowerCase();
 
-              if (imageClass.match(topping)) {
+              if (imageClass.includes(topping)) {
                 image.classList.add(classNames.menuProduct.imageVisible);
               }
             });
           } else {
             images.forEach(image => {
-              const imageClass = image.className.replace(/\-/g, ' ').toLowerCase();
-              const topping = `${option.label}`.toLowerCase();
+              const imageClass = image.className.replace(/-/g, ' ').toLowerCase();
+              const topping = `${param.label} ${option.label}`.toLowerCase();
 
-              if (imageClass.match(topping)) {
+              if (imageClass.includes(topping)) {
                 image.classList.remove(classNames.menuProduct.imageVisible);
               }
             });
