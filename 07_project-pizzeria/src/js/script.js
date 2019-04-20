@@ -131,6 +131,25 @@
             price -= option.price;
           }
 
+          if (optionSelected) {
+            images.forEach(image => {
+              const imageClass = image.className.replace(/\-/g, ' ').toLowerCase();
+              const topping = `${option.label}`.toLowerCase();
+
+              if (imageClass.match(topping)) {
+                image.classList.add(classNames.menuProduct.imageVisible);
+              }
+            });
+          } else {
+            images.forEach(image => {
+              const imageClass = image.className.replace(/\-/g, ' ').toLowerCase();
+              const topping = `${option.label}`.toLowerCase();
+
+              if (imageClass.match(topping)) {
+                image.classList.remove(classNames.menuProduct.imageVisible);
+              }
+            });
+          }
         }
       }
       if (price > 0 && reg.test(price)) {
