@@ -131,25 +131,16 @@
             price -= option.price;
           }
 
-          if (optionSelected) {
-            images.forEach(image => {
-              const imageClass = image.className.replace(/-/g, ' ').toLowerCase();
-              const topping = `${param.label} ${option.label}`.toLowerCase();
+          images.forEach(image => {
+            const imageClass = image.className.replace(/-/g, ' ').toLowerCase();
+            const topping = `${param.label} ${option.label}`.toLowerCase();
 
-              if (imageClass.includes(topping)) {
-                image.classList.add(classNames.menuProduct.imageVisible);
-              }
-            });
-          } else {
-            images.forEach(image => {
-              const imageClass = image.className.replace(/-/g, ' ').toLowerCase();
-              const topping = `${param.label} ${option.label}`.toLowerCase();
-
-              if (imageClass.includes(topping)) {
-                image.classList.remove(classNames.menuProduct.imageVisible);
-              }
-            });
-          }
+            if (optionSelected && imageClass.includes(topping)) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            } else if (imageClass.includes(topping)) {
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
+          });
         }
       }
       if (price > 0 && reg.test(price)) {
