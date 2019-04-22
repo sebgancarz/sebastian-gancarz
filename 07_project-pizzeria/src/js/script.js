@@ -155,7 +155,7 @@
       }
       if (price > 0 && reg.test(price)) {
         price *= thisProduct.amountWidget.value;
-        thisProduct.priceElem.textContent = price;
+        thisProduct.priceElem = price;
       }
     }
 
@@ -225,7 +225,7 @@
     },
     initMenu: function () {
       const thisApp = this;
-      console.log('thisApp.data', thisApp.data);
+      // console.log('thisApp.data', thisApp.data);
       for (let productData in thisApp.data.products) {
         new Product(productData, thisApp.data.products[productData]);
       }
