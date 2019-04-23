@@ -156,6 +156,10 @@
       if (price > 0 && reg.test(price)) {
         price *= thisProduct.amountWidget.value;
         thisProduct.priceElem = price;
+        console.log('price:', price, typeof (price));
+        console.log('thisProduct.priceElem:', thisProduct.priceElem, typeof (thisProduct.priceElem));
+        console.log('thisProduct.amountWidget.value', thisProduct.amountWidget.value, typeof (thisProduct.amountWidget.value));
+        console.log(price * thisProduct.amountWidget.value);
       }
     }
 
@@ -170,6 +174,7 @@
   class AmountWidget {
     constructor(element) {
       const thisWidget = this;
+
       thisWidget.getElements(element);
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
@@ -189,25 +194,27 @@
 
     setValue(value) {
       const thisWidget = this;
-      const newValue = value;
+      const newValue = parseInt(value);
 
       // TODO: Add validation
 
       thisWidget.value = newValue;
       thisWidget.announce();
+      console.log('thisWidget.value:', thisWidget.value, typeof (thisWidget.value));
       thisWidget.input.value = thisWidget.value;
     }
 
     initActions() {
       const thisWidget = this;
+
       thisWidget.input.addEventListener('change', thisWidget.setValue(thisWidget.input.value));
-      thisWidget.linkDecrease.addEventListener('click', function (e) {
-        e.preventDefault;
-        thisWidget.setValue(thisWidget.value - 1);
-      });
       thisWidget.linkIncrease.addEventListener('click', function (e) {
         e.preventDefault;
         thisWidget.setValue(thisWidget.value + 1);
+      });
+      thisWidget.linkDecrease.addEventListener('click', function (e) {
+        e.preventDefault;
+        thisWidget.setValue(thisWidget.value - 1);
       });
     }
 
