@@ -153,13 +153,9 @@
           });
         }
       }
-      if (price > 0 && reg.test(price)) {
+      if (reg.test(price)) {
         price *= thisProduct.amountWidget.value;
-        thisProduct.priceElem = price;
-        console.log('price:', price, typeof (price));
-        console.log('thisProduct.priceElem:', thisProduct.priceElem, typeof (thisProduct.priceElem));
-        console.log('thisProduct.amountWidget.value', thisProduct.amountWidget.value, typeof (thisProduct.amountWidget.value));
-        console.log(price * thisProduct.amountWidget.value);
+        thisProduct.priceElem.innerHTML = price;
       }
     }
 
@@ -167,7 +163,9 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', thisProduct.processOrder());
+      thisProduct.amountWidgetElem.addEventListener('updated', function () {
+        thisProduct.processOrder();
+      });
     }
   }
 
@@ -200,7 +198,6 @@
 
       thisWidget.value = newValue;
       thisWidget.announce();
-      console.log('thisWidget.value:', thisWidget.value, typeof (thisWidget.value));
       thisWidget.input.value = thisWidget.value;
     }
 
