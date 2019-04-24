@@ -54,10 +54,10 @@ dataSource.products = {
       '<img class="sauce-cream" src="images/pizza/sour-cream.svg">',
       '<img class="toppings-salami" src="images/pizza/salami.svg">',
       '<img class="toppings-olives" src="images/pizza/olives.svg">',
-      '<img class="toppings-redPeppers" src="images/pizza/red-peppers.svg">',
-      '<img class="toppings-greenPeppers" src="images/pizza/green-peppers.svg">',
+      '<img class="toppings-red-Peppers" src="images/pizza/red-peppers.svg">',
+      '<img class="toppings-green-Peppers" src="images/pizza/green-peppers.svg">',
       '<img class="toppings-mushrooms" src="images/pizza/mushrooms.svg">',
-      '<img class="toppings-basil" src="images/pizza/basil.svg">',
+      '<img class="toppings-fresh-basil" src="images/pizza/basil.svg">',
     ],
     params: {
       sauce: {
@@ -152,10 +152,10 @@ dataSource.products = {
       '<img class="ingredients-cucumber" src="images/salad/cucumber.svg" style="z-index: 1;">',
       '<img class="ingredients-tomatoes" src="images/salad/tomatoes.svg" style="z-index: 2;">',
       '<img class="ingredients-olives" src="images/salad/salad-olives.svg" style="z-index: 3;">',
-      '<img class="ingredients-feta" src="images/salad/feta.svg" style="z-index: 4;">',
-      '<img class="ingredients-herbs" src="images/salad/herbs.svg" style="z-index: 5;">',
+      '<img class="ingredients-feta-cheese" src="images/salad/feta.svg" style="z-index: 4;">',
+      '<img class="ingredients-fresh-herbs" src="images/salad/herbs.svg" style="z-index: 5;">',
       '<img class="ingredients-cheese" src="images/salad/cheese.svg" style="z-index: 6;">',
-      '<img class="ingredients-pepper" src="images/salad/black-pepper.svg" style="z-index: 7;">',
+      '<img class="ingredients-black-pepper" src="images/salad/black-pepper.svg" style="z-index: 7;">',
     ],
     params: {
       ingredients: {
