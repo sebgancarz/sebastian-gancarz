@@ -124,6 +124,7 @@
         for (const optionId in param.options) {
           const option = param.options[optionId];
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          const images = thisProduct.imageWrapper.querySelectorAll('img');
 
           if (optionSelected && !option.default) {
             price += option.price;
@@ -132,46 +133,43 @@
           }
 
           if (optionSelected) {
-            console.log(`'selected:', ${paramId}-${optionId}`);
-
-          } else {
-            console.log('not selected', option.label);
+            images.forEach(image => image.className.value(`${paramId}-${optionId}`) ? image.classList.add(classNames.menuProduct.imageVisible) :
+              image.classList.remove(classNames.menuProduct.imageVisible));
           }
         }
-      }
-      if (price > 0 && reg.test(price)) {
-        thisProduct.priceElem.textContent = price;
-      } else {
-        alert('Please, order again.');
+        if (price > 0 && reg.test(price)) {
+          thisProduct.priceElem.textContent = price;
+        } else {
+          alert('Please, order again.');
+        }
       }
     }
+
+    const app = {
+      initData: function () {
+        const thisApp = this;
+        thisApp.data = dataSource;
+      },
+      initMenu: function () {
+        const thisApp = this;
+        console.log('thisApp.data', thisApp.data);
+        for (let productData in thisApp.data.products) {
+          new Product(productData, thisApp.data.products[productData]);
+        }
+      },
+
+      init() {
+        const thisApp = this;
+        console.log('*** App starting ***');
+        console.log('thisApp:', thisApp);
+        console.log('classNames:', classNames);
+        console.log('settings:', settings);
+        console.log('templates:', templates);
+
+        thisApp.initData();
+        thisApp.initMenu();
+      },
+    };
+
+    app.init();
   }
-
-  const app = {
-    initData: function () {
-      const thisApp = this;
-      thisApp.data = dataSource;
-    },
-    initMenu: function () {
-      const thisApp = this;
-      console.log('thisApp.data', thisApp.data);
-      for (let productData in thisApp.data.products) {
-        new Product(productData, thisApp.data.products[productData]);
-      }
-    },
-
-    init() {
-      const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
-
-      thisApp.initData();
-      thisApp.initMenu();
-    },
-  };
-
-  app.init();
-}
