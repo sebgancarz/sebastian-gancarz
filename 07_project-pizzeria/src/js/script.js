@@ -291,7 +291,6 @@
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = document.querySelector(select.cart.productList);
-      console.log('thisCart.dom.productList', thisCart.dom.productList);
     }
 
     initActions() {
@@ -305,7 +304,7 @@
     add(menuProduct) {
       const thisCart = this;
 
-      const generatedHTML = templates.cartProduct(thisCart.menuProduct);
+      const generatedHTML = templates.cartProduct(menuProduct);
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       thisCart.dom.productList.appendChild(generatedDOM);
 
