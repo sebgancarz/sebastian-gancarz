@@ -362,7 +362,7 @@
       const thisCartProduct = this;
 
       thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
-      thisCartProduct.amountWidget.input.addEventListener('update', function () {
+      thisCartProduct.amountWidget.input.addEventListener('updated', function () {
         thisCartProduct.updateCartLine();
       });
     }
