@@ -350,10 +350,6 @@
       thisCart.products.splice(index, 1);
       cartProduct.dom.wrapper.remove(thisCart.dom.productList[index]);
       thisCart.update();
-      console.log('index:', index);
-      console.log('thisCart.products:', thisCart.products);
-      console.log('thisCart.dom.productList:', thisCart.dom.productList);
-      console.log('cartProduct.dom.wrapper:', cartProduct.dom.wrapper);
     }
   }
 
@@ -411,7 +407,6 @@
       thisCartProduct.dom.remove.addEventListener('click', function (e) {
         e.preventDefault();
         thisCartProduct.remove();
-        console.log('remove');
       });
     }
 
