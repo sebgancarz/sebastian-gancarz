@@ -10,6 +10,11 @@
     },
     containerOf: {
       menu: '#product-list',
+      db: {
+        url: '//localhost:3131',
+        product: 'product',
+        order: 'order',
+      },
       cart: '#cart',
     },
     all: {
@@ -70,6 +75,11 @@
     },
     cart: {
       defaultDeliveryFee: 20,
+    },
+    db: {
+      url: '//localhost:3131',
+      product: 'product',
+      order: 'order',
     },
   };
 
@@ -288,8 +298,11 @@
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = document.querySelector(select.cart.productList);
+      thisCart.dom.form = document.querySelector(select.cart.form);
+      thisCart.phone = document.querySelector(select.cart.phone);
+      thisCart.address = document.querySelector(select.cart.address);
 
-      thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
+      thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee', 'phone', 'address'];
 
       for (let key of thisCart.renderTotalsKeys) {
         thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
@@ -309,6 +322,11 @@
 
       thisCart.dom.productList.addEventListener('remove', function () {
         thisCart.remove(event.detail.cartProduct);
+      });
+
+      thisCart.dom.form.addEventListener('submit', function (e) {
+        e.preventDefault;
+        thisCart.sendOrder();
       });
     }
 
@@ -350,6 +368,40 @@
       thisCart.products.splice(index, 1);
       cartProduct.dom.wrapper.remove(thisCart.dom.productList[index]);
       thisCart.update();
+    }
+
+    sendOrder() {
+      const thisCart = this;
+      const url = settings.db.url + '/' + settings.db.order;
+
+      const payload = {
+        totalNumber: thisCart.totalNumber,
+        subtotalPrice: thisCart.subtotalPrice,
+        deliveryFee: thisCart.deliveryFee,
+        totalPrice: thisCart.totalPrice,
+        phone: thisCart.phone.value,
+        address: thisCart.address.value,
+        products: [],
+      };
+
+      thisCart.products.forEach(product => {
+        payload.products.push(product.getData());
+      });
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+
+      fetch(url, options)
+        .then(function (response) {
+          return response.json();
+        }).then(function (parsedResponse) {
+          console.log('parsedResponse:', parsedResponse);
+        });
     }
   }
 
@@ -421,18 +473,41 @@
       });
       thisCartProduct.dom.wrapper.dispatchEvent(event);
     }
+
+    getData() {
+      const thisCartProduct = this;
+      const product = {
+        id: thisCartProduct.id,
+        amount: thisCartProduct.amount,
+        price: thisCartProduct.price,
+        priceSingle: thisCartProduct.priceSingle,
+        params: thisCartProduct.params,
+      };
+      return product;
+    }
   }
 
   const app = {
     initData: function () {
       const thisApp = this;
-      thisApp.data = dataSource;
+      thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.product;
+
+      fetch(url)
+        .then(function (rawResponse) {
+          return rawResponse.json();
+        })
+        .then(function (parsedResponse) {
+          console.log('parsedResponse', parsedResponse);
+          thisApp.data.products = parsedResponse;
+          thisApp.initMenu();
+        });
     },
     initMenu: function () {
       const thisApp = this;
 
       for (let productData in thisApp.data.products) {
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
 
@@ -445,14 +520,13 @@
 
     init() {
       const thisApp = this;
-      // console.log('*** App starting ***');
-      // console.log('thisApp:', thisApp);
-      // console.log('classNames:', classNames);
-      // console.log('settings:', settings);
-      // console.log('templates:', templates);
+      console.log('*** App starting ***');
+      console.log('thisApp:', thisApp);
+      console.log('classNames:', classNames);
+      console.log('settings:', settings);
+      console.log('templates:', templates);
 
       thisApp.initData();
-      thisApp.initMenu();
       thisApp.initCart();
     },
   };
