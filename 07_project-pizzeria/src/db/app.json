@@ -58,7 +58,10 @@
         "<img class=\"toppings-red-Peppers\" src=\"images/pizza/red-peppers.svg\">",
         "<img class=\"toppings-green-Peppers\" src=\"images/pizza/green-peppers.svg\">",
         "<img class=\"toppings-mushrooms\" src=\"images/pizza/mushrooms.svg\">",
-        "<img class=\"toppings-fresh-basil\" src=\"images/pizza/basil.svg\">"
+        "<img class=\"toppings-fresh-basil\" src=\"images/pizza/basil.svg\">",
+        "<img class=\"toppings-bacon\" src=\"images/pizza/bacon.svg\">",
+        "<img class=\"toppings-sweet-corn\" src=\"images/pizza/corn.svg\">",
+        "<img class=\"toppings-pineapple\" src=\"images/pizza/pineapple.svg\">"
       ],
       "params": {
         "sauce": {
@@ -85,6 +88,10 @@
               "price": 2,
               "default": true
             },
+            "corn": {
+              "label": "Sweet Corn",
+              "price": 2
+            },
             "redPeppers": {
               "label": "Red peppers",
               "price": 2,
@@ -100,10 +107,18 @@
               "price": 2,
               "default": true
             },
+            "pineapple": {
+              "label": "Pineapple",
+              "price": 3
+            },
             "basil": {
               "label": "Fresh basil",
               "price": 2,
               "default": true
+            },
+            "bacon": {
+              "label": "Bacon",
+              "price": 3
             },
             "salami": {
               "label": "Salami",
