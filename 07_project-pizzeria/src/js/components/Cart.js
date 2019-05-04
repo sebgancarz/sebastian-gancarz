@@ -56,7 +56,7 @@ export class Cart {
     });
 
     thisCart.dom.form.addEventListener('submit', function (e) {
-      e.preventDefault;
+      e.preventDefault();
       thisCart.sendOrder();
     });
   }

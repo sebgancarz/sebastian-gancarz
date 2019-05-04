@@ -39,11 +39,11 @@ export class AmountWidget {
 
     thisWidget.input.addEventListener('change', thisWidget.setValue(thisWidget.input.value));
     thisWidget.linkIncrease.addEventListener('click', function (e) {
-      e.preventDefault;
+      e.preventDefault();
       thisWidget.setValue(thisWidget.value + 1);
     });
     thisWidget.linkDecrease.addEventListener('click', function (e) {
-      e.preventDefault;
+      e.preventDefault();
       thisWidget.setValue(thisWidget.value - 1);
     });
   }

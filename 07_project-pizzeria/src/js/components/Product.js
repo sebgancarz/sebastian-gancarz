@@ -46,7 +46,7 @@ export class Product {
     const thisProduct = this;
 
     thisProduct.accordionTrigger.addEventListener('click', function (e) {
-      e.preventDefault;
+      e.preventDefault();
       thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
 
