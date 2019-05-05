@@ -22,9 +22,7 @@ export class Booking {
     thisBooking.dom.wrapper = booked;
     thisBooking.dom.wrapper.innerHTML = generatedHTML;
     thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
-    console.log('thisBooking.dom.peopleAmount:', thisBooking.dom.peopleAmount);
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
-    console.log('thisBooking.dom.hoursAmount:', thisBooking.dom.hoursAmount);
   }
 
   initWidgets() {

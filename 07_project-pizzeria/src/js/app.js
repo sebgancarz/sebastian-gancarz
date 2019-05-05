@@ -83,12 +83,10 @@ const app = {
 
     for (let link of thisApp.navLinks) {
       link.classList.toggle(classNames.nav.active, link.getAttribute('href') === `#${pageId}`);
-      console.log('link', link);
     }
 
     for (let page of thisApp.pages) {
       page.classList.toggle(classNames.nav.active, page.getAttribute('id') === pageId);
-      console.log('page', page);
     }
 
     window.location.hash = `#/${pageId}`;
@@ -98,7 +96,6 @@ const app = {
     const thisApp = this;
 
     const bookingElem = document.querySelector(select.containerOf.booking);
-    console.log('bookingElem', bookingElem);
     thisApp.booking = new Booking(bookingElem);
   },
 
