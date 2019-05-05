@@ -83,7 +83,13 @@ export class Cart {
       thisCart.totalNumber += product.amount;
     }
 
-    thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+    if (thisCart.subtotalPrice) {
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+    } else {
+      thisCart.deliveryFee = 0;
+      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+    }
 
     for (let key of thisCart.renderTotalsKeys) {
       for (let elem of thisCart.dom[key]) {
