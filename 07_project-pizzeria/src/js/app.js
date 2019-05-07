@@ -28,6 +28,9 @@ const app = {
         console.log('parsedResponse', parsedResponse);
         thisApp.data.products = parsedResponse;
         thisApp.initMenu();
+      })
+      .catch(function (error) {
+        console.log('Error: ', error);
       });
   },
   initMenu: function () {
