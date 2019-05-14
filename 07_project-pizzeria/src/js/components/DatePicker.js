@@ -41,7 +41,7 @@ export class DatePicker extends BaseWidget {
       }
     });
 
-    thisWidget.dom.input._flatpickr.config.onChange = function (dateObj, dateStr, instance) {
+    thisWidget.dom.input._flatpickr.config.onChange = function (dateStr) {
       console.info(dateStr);
       thisWidget.value = dateStr;
     };
