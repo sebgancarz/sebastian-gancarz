@@ -1,3 +1,4 @@
+/* global rangeSlider */
 import {
   BaseWidget
 } from './BaseWidget.js';
@@ -25,17 +26,14 @@ export class HourPicker extends BaseWidget {
     const thisWidget = this;
 
     rangeSlider.create(thisWidget.dom.input);
-    thisWidget.dom.input.addEventListener('input', function (e) {
-      thisWidget.value = e.target.value;
+    thisWidget.dom.input.addEventListener('input', function () {
+      thisWidget.value = thisWidget.dom.input.value;
     });
-    return thisWidget.value;
   }
 
   parseValue(newValue) {
-    const thisWidget = this;
 
-    thisWidget.dom.input = utils.numberToHour(newValue);
-    return thisWidget.value;
+    return utils.numberToHour(newValue);
   }
 
   isValid() {
@@ -45,6 +43,6 @@ export class HourPicker extends BaseWidget {
   renderValue() {
     const thisWidget = this;
 
-    thisWidget.dom.output.textContent = thisWidget.dom.input;
+    thisWidget.dom.output.textContent = thisWidget.value;
   }
 }
