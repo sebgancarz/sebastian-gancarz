@@ -143,7 +143,6 @@ export class Booking {
       }
       thisBooking.booked[date][hour].push(table);
     }
-    console.log(thisBooking.booked);
   }
 
   updateDOM() {
@@ -153,10 +152,7 @@ export class Booking {
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
 
     thisBooking.dom.tables.forEach(table => {
-      let tableNumber = table.getAttribute(settings.booking.tableIdAttribute);
-      if (!isNaN(tableNumber)) {
-        tableNumber = parseInt(tableNumber);
-      }
+      let tableNumber = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
 
       if (thisBooking.booked[thisBooking.date] && thisBooking.booked[thisBooking.date][thisBooking.hour] && thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(tableNumber) > -1) {
         table.classList.add(classNames.booking.tableBooked);

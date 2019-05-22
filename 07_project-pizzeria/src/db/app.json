@@ -269,13 +269,24 @@
     }
   ],
   "booking": [{
-    "id": 1,
-    "date": "2019-06-02",
-    "hour": "19:30",
-    "table": 3,
-    "repeat": false,
-    "duration": 4,
-    "ppl": 1,
-    "starters": []
-  }]
+      "id": 1,
+      "date": "2019-06-02",
+      "hour": "19:30",
+      "table": 3,
+      "repeat": false,
+      "duration": 4,
+      "ppl": 1,
+      "starters": []
+    },
+    {
+      "id": 1,
+      "date": "2019-06-01",
+      "hour": "18:30",
+      "table": 1,
+      "repeat": false,
+      "duration": 4,
+      "ppl": 1,
+      "starters": []
+    }
+  ]
 }
