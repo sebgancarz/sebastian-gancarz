@@ -13,7 +13,7 @@ class Column extends React.Component {
   }
 
   render() {
-    console.log('Cards:', this.state.cards);
+
     return (
       <section className={styles.component}>
 
@@ -39,7 +39,7 @@ class Column extends React.Component {
         cards: [
           ...state.cards,
           {
-            key: state.cards[state.cards.length-1].key+1,
+            key: state.cards.length,
             title
           }
         ]
