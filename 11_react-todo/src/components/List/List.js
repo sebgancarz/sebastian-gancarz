@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './List.scss';
 import Hero from '../Hero/Hero';
-import Column from '../Column/Column'
-import Creator from '../Creator/Creator'
+import Column from '../Column/Column';
+import Creator from '../Creator/Creator';
 import PropTypes from 'prop-types';
 import {settings} from '../../data/dataStore';
 import ReactHtmlParser from 'react-html-parser';
@@ -36,24 +36,24 @@ class List extends React.Component {
         </div>
 
       </section>
-    )
+    );
   }
 
   addColumn(title){
-  this.setState(state => (
-    {
-      columns: [
-        ...state.columns,
-        {
-          key: state.columns.length ? state.columns[state.columns.length-1].key+1 : 0,
-          title,
-          icon: 'list-alt',
-          cards: []
-        }
-      ]
-    }
-  ));
-}
+    this.setState(state => (
+      {
+        columns: [
+          ...state.columns,
+          {
+            key: state.columns.length ? state.columns[state.columns.length-1].key+1 : 0,
+            title,
+            icon: 'list-alt',
+            cards: [],
+          },
+        ],
+      }
+    ));
+  }
 
   static propTypes = {
     title: PropTypes.node.isRequired,
